@@ -48,3 +48,16 @@ section.hero {
 section.cart {
   background: #F8F8F8;
 }
+section.cart .amount {
+  color: #009933;
+}
+
+section.login {
+  background: #F8F8F8;
+}
+section.login a {
+  color: #009933;
+}
+section.login a:hover {
+  color: #00ff55;
+}
