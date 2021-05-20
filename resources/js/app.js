@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { initAdmin } from './admin'
+import moment from 'moment'
 
 
 let addToCart = document.querySelectorAll('.add-to-cart')
@@ -25,3 +27,4 @@ if(alertMsg){
         alertMsg.remove()
     },2000)
 }
+initAdmin()
