@@ -61,3 +61,7 @@ section.login a {
 section.login a:hover {
   color: #00ff55;
 }
+
+a.link {
+  color: #009933;
+}

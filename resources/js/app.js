@@ -16,3 +16,12 @@ addToCart.forEach((btn)=>{
         updateCart(food)
     })
 })
+
+//remove alert
+
+const alertMsg = document.querySelector('#success-alert')
+if(alertMsg){
+    setTimeout(()=>{
+        alertMsg.remove()
+    },2000)
+}
