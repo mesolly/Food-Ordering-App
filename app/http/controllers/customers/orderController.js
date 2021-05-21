@@ -23,6 +23,14 @@ function orderController(){
             const orders = await orderSchema.find({ customerId: req.user._id}, null ,{ sort:{'createdAt':-1} })
             res.header('Cache-Control', 'no-store')
             res.render('customers/orders', { orders : orders,moment:moment})
+        },
+        async show(req,res){
+            const order = await orderSchema.findById(req.params.id)
+            //Authorize user
+            if(req.user._id.toString() === order.customerId.toString()){
+                return res.render('customers/singleOrder',{ order : order })
+            } 
+            return res.redirect('/')
         }
     }
 }
