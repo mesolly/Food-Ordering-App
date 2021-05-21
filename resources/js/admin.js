@@ -1,8 +1,7 @@
 import axios from 'axios'
 import moment from 'moment'
-import { Socket } from 'socket.io'
 
-export function initAdmin(socket) {
+export function initAdmin() {
     const orderTableBody = document.querySelector('#orderTableBody')
     let orders = []
     let markup
@@ -78,11 +77,5 @@ export function initAdmin(socket) {
         `
         }).join('')
     }
-    socket.on('orderPlaced',(order)=>{
-        //Notification
-        orders.unshift(order)
-        orderTableBody.innerHTML = ''
-        orderTableBody.innerHTML = generateMarkup(orders)
-    })
 }
 
