@@ -167,3 +167,9 @@ section.status {
 .status-box ul li.current span:after {
   background: #009933;
 }
+
+.status-box ul li small {
+  float: right;
+  font-size: 14px;
+  margin-top: 8px;
+}

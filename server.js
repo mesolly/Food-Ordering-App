@@ -9,7 +9,7 @@ const flash = require('express-flash')
 const app = express() 
 var MongoDbStore = require('connect-mongodb-session')(session);
 const passport = require('passport')
-
+const Emitter =require('events')
 const PORT=process.env.PORT || 3000 
 
 const url = 'mongodb://localhost/spice' ;
@@ -29,6 +29,9 @@ var mongostore = new MongoDbStore({
     uri: url,
     collection: 'sessions'
     });
+//Event emitter
+const eventEmitter = new Emitter()
+app.set('eventEmitter',eventEmitter)
 
 //session config
     app.use(session({
@@ -63,6 +66,23 @@ app.use(express.static('public'))
 
 require('./routes/web')(app)
 
-app.listen(PORT,()=>{
-    console.log(`Listening on port ${PORT}`)
-});
+const server=app.listen(PORT,()=>{
+                console.log(`Listening on port ${PORT}`)
+            });
+
+//Socket
+const io = require('socket.io')(server)
+io.on('connection',(socket)=>{
+    //Join
+    socket.on('join',(roomName) =>{
+        socket.join(roomName)
+    })
+})
+
+eventEmitter.on('orderUpdated',(data)=>{
+    io.to(`order_${data.id}`).emit('orderUpdated',data)
+})
+
+eventEmitter.on('orderPlaced',(data)=>{
+    io.to('adminRoom').emit('orderPlaced',data)
+})
