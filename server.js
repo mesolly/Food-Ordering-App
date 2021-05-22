@@ -13,7 +13,7 @@ const Emitter = require('events')
 
 const PORT=process.env.PORT || 3000 
 
-const url = 'mongodb://localhost/spice' ;
+const url = 'mongodb+srv://solly:zXmjWyc5oNShjzrl@cluster0.7bvqw.mongodb.net/spice' ;
 mongoose.connect(url,{ useNewUrlParser: true, useCreateIndex: true,useUnifiedTopology : true,
     useFindAndModify : true});
 const connection = mongoose.connection ;
@@ -40,7 +40,7 @@ app.set('eventEmitter', eventEmitter)
         resave : false,
         store : mongostore,
         saveUninitialized : false,
-        cookie : { maxAge : 1000 * 60 * 60 * 24} //24 hour
+        cookie : { maxAge : 1000 * 60 * 60 * 1} //24 hour
     }))
 //
 // Passport config

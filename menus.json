@@ -1,12 +1,4 @@
-[{
-    "_id": {
-      "$oid": "5eee651f739f8c674fd736ee"
-    },
-    "name": "Appam",
-    "image": "Appam.jpg",
-    "price": "120",
-    "size": "1"
-  },{
+  [{
     "_id": {
       "$oid": "5eee6671a27a66807cf2bea3"
     },
@@ -14,7 +6,8 @@
     "image": "dosa.png",
     "price": "180",
     "size": "1"
-  },{
+  },
+  {
     "_id": {
       "$oid": "5eee6692a27a66807cf2bea4"
     },
@@ -22,6 +15,15 @@
     "image": "idle.png",
     "price": "60",
     "size": "6"
+  },
+  {
+    "_id": {
+      "$oid": "5eee651f739f8c674fd736ee"
+    },
+    "name": "Appam",
+    "image": "Appam.jpg",
+    "price": "120",
+    "size": "1"
   },{
     "_id": {
       "$oid": "5eee66a5a27a66807cf2bea5"
@@ -46,12 +48,22 @@
     "image": "Rava_Upma.jpg",
     "price": "80",
     "size": "1"
-  },{
+  },
+  {
     "_id": {
       "$oid": "5eee66eea27a66807cf2bea8"
     },
     "name": "Uttapam",
     "image": "Uttapam.jpeg",
     "price": "150",
+    "size": "1"
+  },
+  { 
+    "_id": {
+      "$oid": "5eee6717a27a66807cf2bea9"
+    },
+    "name": "Ven Pongal",
+    "image": "Ven-Pomgal.jpg",
+    "price": "120",
     "size": "1"
   }]

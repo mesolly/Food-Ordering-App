@@ -27,7 +27,11 @@ if(alertMsg){
         alertMsg.remove()
     },2000)
 }
-initAdmin()
+let adminAreaPath =  window.location.pathname
+if(adminAreaPath.includes('admin')){
+    initAdmin()
+}
+
 let statuses = document.querySelectorAll('.status_line')
 let hiddenInput = document.querySelector('#hiddenInput')
 let order = hiddenInput ? hiddenInput.value : null
