@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { initAdmin } from './admin'
 import moment from 'moment'
+import Noty from 'noty'
 
 
 let addToCart = document.querySelectorAll('.add-to-cart')
@@ -9,6 +10,19 @@ let cartCounter = document.querySelector('#cartCounter')
 function updateCart(food){
     axios.post('/update-cart',food).then(res =>{
         cartCounter.innerText = res.data.totalQty
+        new Noty({
+            type: 'success',
+            timeout: 1000,
+            text: "Item added to Cart",
+            progressBar: false,
+        }).show();
+    }).catch(err => {
+        new Noty({
+            type: 'error',
+            timeout: 1000,
+            text: 'Something went wrong',
+            progressBar: false,
+        }).show();
     })
 }
 
@@ -74,4 +88,10 @@ socket.on('orderUpdated', (data) => {
     updatedOrder.updatedAt = moment().format()
     updatedOrder.status = data.status
     updateStatus(updatedOrder)
+    new Noty({
+        type: 'success',
+        timeout: 1000,
+        text: 'Order updated',
+        progressBar: false,
+    }).show();
 })

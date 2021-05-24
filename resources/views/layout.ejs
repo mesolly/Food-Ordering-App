@@ -21,7 +21,11 @@
             <ul class="flex items-center">
                 <li class="ml-6"><a href="#menuj">Menu</a></li>
                 <li class="ml-6"><a href="/customer/orders">Orders</a></li>
+                
                 <% if(user) { %>
+                <% if(user.role === 'admin') { %>
+                    <li class="ml-6"><a href="/admin/orders"> All Orders</a></li>
+                <% } %>
                 <li class="ml-6">
                     <form id="logout" action="/logout" method="POST">
                         <a onclick="document.getElementById('logout').submit()" href="#">Logout</a>
