@@ -1910,15 +1910,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var addToCart = document.querySelectorAll('.add-to-cart');
+var removeToCart = document.querySelectorAll(".remove-to-cart");
 var cartCounter = document.querySelector('#cartCounter');
 
-function updateCart(food) {
-  axios__WEBPACK_IMPORTED_MODULE_0___default().post('/update-cart', food).then(function (res) {
+function updateCart(food, url, msg) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default().post(url, food).then(function (res) {
     cartCounter.innerText = res.data.totalQty;
     new (noty__WEBPACK_IMPORTED_MODULE_3___default())({
       type: 'success',
       timeout: 1000,
-      text: "Item added to Cart",
+      text: msg,
       progressBar: false
     }).show();
   })["catch"](function (err) {
@@ -1933,8 +1934,21 @@ function updateCart(food) {
 
 addToCart.forEach(function (btn) {
   btn.addEventListener('click', function (e) {
+    var food = JSON.parse(btn.dataset.food); // if data fetched from session , there will be have "item object" => (cart.ejs)
+
+    if (food.item) {
+      food = food.item;
+    }
+
+    var url = "/update-cart";
+    updateCart(food, url, "Item added to cart");
+  });
+});
+removeToCart.forEach(function (btn) {
+  btn.addEventListener("click", function (e) {
     var food = JSON.parse(btn.dataset.food);
-    updateCart(food);
+    var url = "/remove-cart";
+    updateCart(food.item, url, "Item removed to cart");
   });
 }); //remove alert
 

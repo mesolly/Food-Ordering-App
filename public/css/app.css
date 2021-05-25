@@ -309,12 +309,12 @@ section.hero {
   background: #F8F8F8;
 }
 
-.add-to-cart {
+.add-to-cart, .remove-to-cart {
   border: 2px solid #009933;
   color: #009933;
   transition: all 0.3s ease-in-out;
 }
-.add-to-cart:hover {
+.add-to-cart:hover, .remove-to-cart:hover {
   background: #009933;
   border-color: #fff;
   color: #fff;

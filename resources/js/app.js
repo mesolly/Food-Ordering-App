@@ -5,15 +5,16 @@ import Noty from 'noty'
 
 
 let addToCart = document.querySelectorAll('.add-to-cart')
+let removeToCart = document.querySelectorAll(".remove-to-cart")
 let cartCounter = document.querySelector('#cartCounter')
 
-function updateCart(food){
-    axios.post('/update-cart',food).then(res =>{
+function updateCart(food,url,msg){
+    axios.post(url,food).then(res =>{
         cartCounter.innerText = res.data.totalQty
         new Noty({
             type: 'success',
             timeout: 1000,
-            text: "Item added to Cart",
+            text: msg,
             progressBar: false,
         }).show();
     }).catch(err => {
@@ -26,10 +27,23 @@ function updateCart(food){
     })
 }
 
-addToCart.forEach((btn)=>{
-    btn.addEventListener('click',(e)=>{
+addToCart.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
         let food = JSON.parse(btn.dataset.food)
-        updateCart(food)
+       // if data fetched from session , there will be have "item object" => (cart.ejs)
+        if (food.item) {
+            food = food.item
+        }
+        let url = "/update-cart";
+        updateCart(food, url, "Item added to cart")
+    })
+})
+
+removeToCart.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+        let food = JSON.parse(btn.dataset.food)
+        let url = "/remove-cart"
+        updateCart(food.item, url, "Item removed to cart")
     })
 })
 

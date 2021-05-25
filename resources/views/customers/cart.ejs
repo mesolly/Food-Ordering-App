@@ -13,12 +13,18 @@
                     <h1><%=food.item.name%></h1>
                     <span><%=food.item.size%> Pcs</span>
                 </div>
-                <span class="flex-1"><%=food.qty%></span>
+                <button data-food="<%=JSON.stringify(food)%>" class="add-to-cart py-1 px-6 rounded-full flex item-center font-bold">
+                    <span>+</span>
+                </button>
+                <button data-food="<%=JSON.stringify(food)%>" class="remove-to-cart py-1 px-6 rounded-full flex item-center font-bold">
+                    <span>-</span>
+                </button>
+                <span class="flex-1 ml-1"> <%= food.qty %> Pcs</span>
                 <span class="font-bold text-lg">₹<%=food.item.price * food.qty %></span>
             </div>
             <% } %>
         </div>
-        <hr>
+        <hr> 
         <div class="text-right py-4">
             <div>
                 <span class="text-lg font-bold">Total Amount:</span>
