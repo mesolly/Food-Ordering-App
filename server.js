@@ -13,7 +13,7 @@ const Emitter = require('events')
 
 const PORT=process.env.PORT || 3000 
 
-const url = 'mongodb+srv://solly:fJIAvmObGeXq0woq@cluster0.7bvqw.mongodb.net/spice' ;
+const url = process.env.MONGO_CONNECTION_URL;
 mongoose.connect(url,{ useNewUrlParser: true, useCreateIndex: true,useUnifiedTopology : true,
     useFindAndModify : true});
 const connection = mongoose.connection ;
